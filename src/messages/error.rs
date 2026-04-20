@@ -5,6 +5,11 @@ use std::fmt::Display;
 pub enum Sv2MessageError {
     FailedToConvertProtocol,
     FailedToSerializeString,
+    ByteArrayLengthMismatch,
+    ByteArrayTooLong,
+    SequenceTooLong,
+    SequenceItemLengthMismatch,
+    SequenceItemTooLong,
     FailedToSerializeByteArray,
 }
 
@@ -13,3 +18,5 @@ impl Display for Sv2MessageError {
         write!(f, "{:?}", self)
     }
 }
+
+impl std::error::Error for Sv2MessageError {}
